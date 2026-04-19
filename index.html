@@ -45,13 +45,13 @@
 
         #content { display: none; text-align: center; }
 
-        /* 1. BETDAGI OTLAR TARTIBI */
-        .horse-main { width: 100px; position: absolute; top: 60px; opacity: 0; transition: 1.5s; z-index: 1; }
-        .h-left { left: 5px; }
-        .h-right { right: 5px; transform: scaleX(-1); } /* O'ngdagi ot o'ngga qaragan */
+        /* 1. BET: OTLAR VA YOZUVLAR FIX (Simmetriya va Joy) */
+        .horse-main { width: 110px; position: absolute; top: 50px; opacity: 0; transition: 1.5s; z-index: 1; }
+        .h-left { left: 10px; }
+        .h-right { right: 10px; transform: scaleX(-1); } /* O'ngdagi ot o'ngga qaragan */
 
-        /* YOZUVLARNING USTMA-UST TUSHMASLIGI */
-        .title-group { position: relative; padding-top: 140px; margin-bottom: 20px; z-index: 5; }
+        /* YOZUVLAR JOYLASSHUVI */
+        .title-group { position: relative; padding-top: 150px; margin-bottom: 25px; z-index: 5; }
         .shohona-title { font-family: 'Great Vibes', cursive; font-size: 5.2rem; color: var(--emerald); margin: 0; line-height: 1; }
         .sunnat-toyi { font-family: 'Cinzel Decorative'; font-size: 2.2rem; color: var(--royal-gold); margin: 0; font-weight: 900; line-height: 1.2; }
 
@@ -68,7 +68,7 @@
         }
         .img-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* NAHOR OSHI */
+        /* PALOV AYLANISHI */
         .palov-container { width: 180px; margin: 20px auto; }
         .rotating-palov {
             width: 100%; height: auto;
@@ -76,11 +76,12 @@
         }
         @keyframes rotateDisk { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* CARD VA TO'YXONA RASMI FIX */
+        /* CARD VA TO'YXONA RASMI */
         .card {
-            background: white; margin: 25px 15px; padding: 10px 20px 40px 20px;
+            background: white; margin: 25px 0; padding: 10px 20px 40px 20px;
             border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             position: relative; border: 1px solid rgba(1, 50, 32, 0.1);
+            width: calc(100% - 40px); margin-left: auto; margin-right: auto;
         }
         .toyxona-card-img {
             width: 100%; height: 230px; border-radius: 20px; 
@@ -102,10 +103,10 @@
             font-family: 'Montserrat'; font-size: 1rem;
         }
 
-        /* NAQSHLARNING SLAYDGA MOSLANISHI */
-        .pattern-slide { width: 100%; max-width: 320px; height: auto; opacity: 0.6; margin: 0 auto; display: block; }
-        .pattern-top { padding-top: 10px; }
-        .pattern-bottom { padding-bottom: 20px; transform: rotate(180deg); }
+        /* NAQSHLAR (Ekranning ikki chetiga tegib turadi) */
+        .pattern-full { width: 100vw; max-width: 100%; height: auto; opacity: 0.7; margin: 0; display: block; position: relative; left: 50%; transform: translateX(-50%); }
+        .pattern-top { padding-top: 5px; }
+        .pattern-bottom { padding-bottom: 10px; transform: translateX(-50%) rotate(180deg); }
 
         .timer-box { background: var(--emerald); color: var(--royal-gold); padding: 12px; border-radius: 12px; min-width: 70px; }
     </style>
@@ -122,7 +123,7 @@
     <img src="horse_running.gif" id="horse-run">
 
     <div id="content">
-        <section style="min-height: 100vh; position: relative;">
+        <section style="min-height: 100vh; position: relative; padding-bottom: 20px;">
             <img src="horse_left.png" id="static-l" class="horse-main h-left">
             <img src="horse_right.png" id="static-r" class="horse-main h-right">
             
@@ -132,13 +133,13 @@
             </div>
 
             <div style="margin: 0 auto; z-index: 5; position: relative;" data-aos="fade-up">
-                <img src="toy_bola.jpg" style="width: 280px; height: 280px; border-radius: 50%; border: 6px solid var(--royal-gold); object-fit: cover;">
+                <img src="toy_bola.jpg" style="width: 290px; height: 290px; border-radius: 50%; border: 6px solid var(--royal-gold); object-fit: cover;">
             </div>
-            <img src="pattern_fon.png" class="pattern-slide pattern-bottom" style="margin-top: 20px;">
+            <img src="pattern_fon.png" class="pattern-full pattern-bottom" style="margin-top: 30px;">
         </section>
 
         <section class="card" data-aos="fade-up">
-            <img src="pattern_fon.png" class="pattern-slide pattern-top">
+            <img src="pattern_fon.png" class="pattern-full pattern-top">
             <div class="gallery-box">
                 <div class="img-item"><img src="bola1.jpg"></div>
                 <div class="img-item"><img src="bola2.jpg"></div>
@@ -149,11 +150,11 @@
                 Lutfan taklif etamiz!<br>
                 Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli va shonli kunini baham ko'rishga chin qalbimizdan taklif qilamiz!
             </p>
-            <img src="pattern_fon.png" class="pattern-slide pattern-bottom">
+            <img src="pattern_fon.png" class="pattern-full pattern-bottom">
         </section>
 
         <section class="card" data-aos="fade-up">
-            <img src="pattern_fon.png" class="pattern-slide pattern-top">
+            <img src="pattern_fon.png" class="pattern-full pattern-top">
             <h3 id="txt-time-title" style="font-family: 'Cinzel Decorative'; color: var(--emerald);">TADBIR VAQTI</h3>
             <div class="palov-container">
                 <img src="palov.png" class="rotating-palov">
@@ -161,35 +162,33 @@
             <p style="font-size: 1.7rem; font-weight: bold; color: var(--emerald); margin: 10px 0;">27-DEKABR, 2026</p>
             <p id="txt-osh" style="font-size: 1.1rem;">NAHOR OSHI: 07:00 – 09:00</p>
             <p id="txt-tantana" style="font-size: 1.1rem;">TANTANA: 18:00 DA</p>
-            <img src="pattern_fon.png" class="pattern-slide pattern-bottom">
+            <img src="pattern_fon.png" class="pattern-full pattern-bottom">
         </section>
 
         <section class="card" data-aos="zoom-in">
-            <img src="pattern_fon.png" class="pattern-slide pattern-top">
+            <img src="pattern_fon.png" class="pattern-full pattern-top">
             <h3 id="txt-loc" style="color: var(--emerald); font-family: 'Cinzel Decorative'; margin-bottom: 10px;">MANZIL</h3>
-            
             <img src="toyxona.jpg" class="toyxona-card-img" alt="Ideal SS">
-            
             <p style="margin-top: 15px; font-size: 1.1rem;"><b>"IDEAL SS"</b> <span id="txt-hall">TANTANALAR SAROYI</span></p>
             <p id="txt-address">Sho'rchi tumani, Surxondaryo</p>
             <a href="https://maps.google.com" target="_blank" class="btn-map g-map">GOOGLE MAPS</a>
             <a href="https://yandex.uz/maps" target="_blank" class="btn-map y-map">YANDEX MAPS</a>
-            <img src="pattern_fon.png" class="pattern-slide pattern-bottom">
+            <img src="pattern_fon.png" class="pattern-full pattern-bottom">
         </section>
 
         <div class="card" data-aos="fade-up">
-            <img src="pattern_fon.png" class="pattern-slide pattern-top">
+            <img src="pattern_fon.png" class="pattern-full pattern-top">
             <h3 id="txt-gift">TO'YONA</h3>
             <div style="background: #fdfaf0; padding: 20px; border-radius: 15px; border: 1px dashed var(--royal-gold); margin: 10px 0;">
                 <p style="font-size: 1.3rem; font-weight: bold; color: #333; margin: 0;">9860 1234 5678 9012</p>
                 <small style="color: #666;">RAIM BOBO</small>
             </div>
             <button id="txt-copy" onclick="copyCard()" style="background: var(--royal-gold); color: white; border: none; padding: 12px 25px; border-radius: 8px; margin-top: 10px; font-weight: bold; cursor: pointer;">NUSXALASH</button>
-            <img src="pattern_fon.png" class="pattern-slide pattern-bottom">
+            <img src="pattern_fon.png" class="pattern-full pattern-bottom">
         </div>
 
         <section class="card" data-aos="fade-up">
-            <img src="pattern_fon.png" class="pattern-slide pattern-top">
+            <img src="pattern_fon.png" class="pattern-full pattern-top">
             <h3 id="txt-confirm">TASHRIFNI TASDIQLASH</h3>
             <form id="attendance-form">
                 <input type="text" name="name" id="ph-name" placeholder="Ismingiz" required class="input-style">
@@ -208,7 +207,7 @@
                 <div class="timer-box"><span id="hours">00</span><br><small id="lbl-h">Soat</small></div>
                 <div class="timer-box"><span id="minutes">00</span><br><small id="lbl-m">Daq</small></div>
             </div>
-            <img src="pattern_fon.png" class="pattern-slide pattern-bottom">
+            <img src="pattern_fon.png" class="pattern-full pattern-bottom">
         </section>
 
         <p id="txt-end" style="font-family: 'Great Vibes'; font-size: 3.5rem; color: var(--royal-gold); margin: 60px 0;">Sizni kutib qolamiz!</p>
@@ -245,7 +244,7 @@
         let currentLang = 'latin';
         const langData = {
             latin: { gate: "DO'PPINI BOSING", sunnat: "SUNNAT TO'YI", invite: "Lutfan taklif etamiz! Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli kunini baham ko'rishga taklif qilamiz!", timeTitle: "TADBIR VAQTI", osh: "NAHOR OSHI: 07:00 – 09:00", tantana: "TANTANA: 18:00 DA", loc: "MANZIL", hall: "TANTANALAR SAROYI", address: "Sho'rchi tumani, Surxondaryo", gift: "TO'YONA", copy: "NUSXALASH", confirm: "TASHRIFNI TASDIQLASH", send: "YUBORISH", left: "TO'YGACHA QOLDI:", d: "Kun", h: "Soat", m: "Daq", end: "Sizni kutib qolamiz!", btn: "KRILL", ph: "Ismingiz", phGift: "To'yona miqdori (ixtiyoriy)" },
-            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан таклиф этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "TANTANALAR SAROYI", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Soat", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
+            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан taklif этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "TANTANALAR SAROYI", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Soat", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
         };
 
         function toggleLang() {
