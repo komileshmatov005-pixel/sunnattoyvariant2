@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad - Taklifnoma</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@1,900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --royal-gold: #d4af37;
+            --emerald: #013220;
+            --silk: #fffdf5;
+        }
+
+        body, html { margin: 0; padding: 0; background: var(--silk); overflow-x: hidden; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+
+        .lang-switcher {
+            position: fixed; top: 20px; right: 20px; z-index: 10002;
+            background: var(--royal-gold); color: white; border: 2px solid white;
+            padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer;
+            display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        #intro-gate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+            background: var(--emerald); z-index: 10000; 
+            display: flex; justify-content: center; align-items: center;
+            flex-direction: column; transition: 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .doppi-btn {
+            width: 160px; cursor: pointer; transition: 0.3s;
+            filter: drop-shadow(0 0 15px var(--royal-gold));
+            z-index: 10001;
+        }
+
+        #horse-run {
+            position: fixed; bottom: 15%; left: -300px; width: 250px;
+            z-index: 10005; display: none; pointer-events: none;
+        }
+        @keyframes gallop { 0% { left: -300px; } 100% { left: 120%; } }
+
+        #content { display: none; text-align: center; }
+
+        .horse-static { width: 100px; position: absolute; top: 40px; opacity: 0; transition: 1.5s; z-index: 5; }
+        .h-left { left: 10px; }
+        .h-right { right: 10px; transform: scaleX(-1); }
+
+        .shohona-title { font-family: 'Great Vibes', cursive; font-size: 5rem; color: var(--emerald); margin: 0; }
+        .sunnat-toyi { font-family: 'Cinzel Decorative'; font-size: 2.2rem; color: var(--royal-gold); margin: -10px 0 20px 0; font-weight: 900; }
+
+        .gallery-box {
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+            gap: 10px; padding: 20px; margin: 20px 0; scrollbar-width: none;
+        }
+        .gallery-box::-webkit-scrollbar { display: none; }
+        .img-item {
+            flex: 0 0 85%; scroll-snap-align: center;
+            height: 350px; border: 4px solid var(--royal-gold);
+            border-radius: 25px; overflow: hidden;
+        }
+        .img-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        .palov-container { width: 180px; margin: 20px auto; }
+        .rotating-palov {
+            width: 100%; height: auto;
+            animation: rotateDisk 20s linear infinite;
+        }
+        @keyframes rotateDisk { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .card {
+            background: white; margin: 25px 15px; padding: 40px 20px;
+            border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative; border: 1px solid rgba(1, 50, 32, 0.1);
+        }
+
+        .toyxona-img {
+            width: 100%; height: 200px; border-radius: 15px; 
+            object-fit: cover; border: 2px solid var(--royal-gold);
+        }
+
+        .btn-map {
+            display: block; width: 90%; margin: 10px auto; padding: 15px;
+            border-radius: 12px; font-weight: bold; text-decoration: none;
+            border: 2px solid var(--royal-gold);
+        }
+        .g-map { background: var(--emerald); color: var(--royal-gold); }
+        .y-map { background: var(--silk); color: var(--emerald); }
+
+        .input-style {
+            width: 90%; padding: 15px; margin: 10px 0;
+            border-radius: 10px; border: 1px solid #ddd;
+            font-family: 'Montserrat'; font-size: 1rem;
+        }
+
+        .pattern { width: 120px; opacity: 0.4; margin: 20px auto; display: block; }
+        .timer-box { background: var(--emerald); color: var(--royal-gold); padding: 12px; border-radius: 12px; min-width: 70px; }
+    </style>
+</head>
+<body>
+
+    <button class="lang-switcher" onclick="toggleLang()" id="langBtn">KRILL</button>
+
+    <div id="intro-gate">
+        <img src="doppi.png" class="doppi-btn" onclick="startMiracle()" alt="Do'ppi">
+        <p id="txt-gate" style="color: var(--royal-gold); font-family: 'Cinzel Decorative'; margin-top: 20px; letter-spacing: 5px;">DO'PPINI BOSING</p>
+    </div>
+
+    <img src="horse_running.gif" id="horse-run">
+
+    <div id="content">
+        <section style="min-height: 100vh; position: relative; padding-top: 80px;">
+            <img src="horse_left.png" id="static-l" class="horse-static h-left">
+            <img src="horse_right.png" id="static-r" class="horse-static h-right">
+            <div data-aos="zoom-in">
+                <h1 class="shohona-title">Muhammad</h1>
+                <h2 id="txt-sunnat" class="sunnat-toyi">SUNNAT TO'YI</h2>
+            </div>
+            <div style="margin: 30px auto;" data-aos="fade-up">
+                <img src="toy_bola.jpg" style="width: 260px; height: 260px; border-radius: 50%; border: 6px solid var(--royal-gold); object-fit: cover;">
+            </div>
+            <img src="pattern_fon.png" class="pattern">
+        </section>
+
+        <section class="card" data-aos="fade-up">
+            <div class="gallery-box">
+                <div class="img-item"><img src="bola1.jpg"></div>
+                <div class="img-item"><img src="bola2.jpg"></div>
+                <div class="img-item"><img src="bola3.jpg"></div>
+                <div class="img-item"><img src="bola4.jpg"></div>
+            </div>
+            <p id="txt-invite" style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; line-height: 1.8;">
+                Lutfan taklif etamiz!<br>
+                Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli va shonli kunini baham ko'rishga chin qalbimizdan taklif qilamiz!
+            </p>
+            <img src="pattern_fon.png" class="pattern" style="transform: rotate(180deg);">
+        </section>
+
+        <section class="card" data-aos="fade-up">
+            <h3 id="txt-time-title" style="font-family: 'Cinzel Decorative'; color: var(--emerald);">TADBIR VAQTI</h3>
+            <div class="palov-container">
+                <img src="palov.png" class="rotating-palov">
+            </div>
+            <p style="font-size: 1.6rem; font-weight: bold; color: var(--emerald);">27-DEKABR, 2026</p>
+            <p id="txt-osh">NAHOR OSHI: 07:00 – 09:00</p>
+            <p id="txt-tantana">TANTANA: 18:00 DA</p>
+        </section>
+
+        <section class="card" data-aos="zoom-in">
+            <h3 id="txt-loc" style="color: var(--emerald); font-family: 'Cinzel Decorative';">MANZIL</h3>
+            <img src="toyxona.jpg" class="toyxona-img">
+            <p style="margin-top: 15px;"><b>"IDEAL SS"</b> <span id="txt-hall">TANTANALAR SAROYI</span></p>
+            <p id="txt-address">Sho'rchi tumani, Surxondaryo</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-map g-map">GOOGLE MAPS</a>
+            <a href="https://yandex.uz/maps" target="_blank" class="btn-map y-map">YANDEX MAPS</a>
+        </section>
+
+        <div class="card" data-aos="fade-up">
+            <h3 id="txt-gift">TO'YONA</h3>
+            <div style="background: #fdfaf0; padding: 15px; border-radius: 15px; border: 1px dashed var(--royal-gold);">
+                <p style="font-size: 1.2rem; font-weight: bold;">9860 1234 5678 9012</p>
+                <small>RAIM BOBO</small>
+            </div>
+            <button id="txt-copy" onclick="copyCard()" style="background: var(--royal-gold); color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; font-weight: bold; cursor: pointer;">NUSXALASH</button>
+        </div>
+
+        <section class="card" data-aos="fade-up">
+            <h3 id="txt-confirm">TASHRIFNI TASDIQLASH</h3>
+            <form id="attendance-form">
+                <input type="text" name="name" id="ph-name" placeholder="Ismingiz" required class="input-style">
+                
+                <input type="number" name="gift_amount" id="ph-gift" placeholder="To'yona miqdori (ixtiyoriy)" class="input-style">
+                
+                <select name="status" class="input-style">
+                    <option id="opt1" value="Boraman">Boraman</option>
+                    <option id="opt2" value="Oilaviy boramiz">Oilaviy boramiz</option>
+                    <option id="opt3" value="Borolmayman">Borolmayman</option>
+                </select>
+                <button type="submit" id="txt-send" style="background: var(--emerald); color: white; width: 90%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">YUBORISH</button>
+            </form>
+            
+            <p id="txt-left" style="margin-top: 40px; font-weight: bold;">TO'YGACHA QOLDI:</p>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                <div class="timer-box"><span id="days">00</span><br><small id="lbl-d">Kun</small></div>
+                <div class="timer-box"><span id="hours">00</span><br><small id="lbl-h">Soat</small></div>
+                <div class="timer-box"><span id="minutes">00</span><br><small id="lbl-m">Daq</small></div>
+            </div>
+        </section>
+
+        <p id="txt-end" style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-gold); margin: 60px 0;">Sizni kutib qolamiz!</p>
+    </div>
+
+    <audio id="audio-gallop"><source src="horse_gallop.mp3" type="audio/mpeg"></audio>
+    <audio id="audio-music" loop><source src="toy_music.mp3" type="audio/mpeg"></audio>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        function startMiracle() {
+            const horse = document.getElementById('horse-run');
+            const gate = document.getElementById('intro-gate');
+            const content = document.getElementById('content');
+            document.getElementById('audio-gallop').play();
+            horse.style.display = 'block';
+            horse.style.animation = 'gallop 2.5s linear forwards';
+            setTimeout(() => {
+                gate.style.opacity = '0';
+                setTimeout(() => {
+                    gate.style.display = 'none';
+                    content.style.display = 'block';
+                    document.getElementById('langBtn').style.display = 'block';
+                    document.getElementById('audio-music').play();
+                    setTimeout(() => {
+                        document.getElementById('static-l').style.opacity = '1';
+                        document.getElementById('static-r').style.opacity = '1';
+                    }, 500);
+                    AOS.init({ duration: 1200, once: true });
+                }, 1000);
+            }, 1800);
+        }
+
+        let currentLang = 'latin';
+        const langData = {
+            latin: { gate: "DO'PPINI BOSING", sunnat: "SUNNAT TO'YI", invite: "Lutfan taklif etamiz! Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli kunini baham ko'rishga taklif qilamiz!", timeTitle: "TADBIR VAQTI", osh: "NAHOR OSHI: 07:00 – 09:00", tantana: "TANTANA: 18:00 DA", loc: "MANZIL", hall: "TANTANALAR SAROYI", address: "Sho'rchi tumani, Surxondaryo", gift: "TO'YONA", copy: "NUSXALASH", confirm: "TASHRIFNI TASDIQLASH", send: "YUBORISH", left: "TO'YGACHA QOLDI:", d: "Kun", h: "Soat", m: "Daq", end: "Sizni kutib qolamiz!", btn: "KRILL", ph: "Ismingiz", phGift: "To'yona miqdori (ixtiyoriy)" },
+            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан таклиф этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "ТАНТАНАЛАР САРОЙИ", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Соат", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'latin' ? 'krill' : 'latin';
+            const l = langData[currentLang];
+            document.getElementById('txt-gate').innerText = l.gate;
+            document.getElementById('txt-sunnat').innerText = l.sunnat;
+            document.getElementById('txt-invite').innerText = l.invite;
+            document.getElementById('txt-time-title').innerText = l.timeTitle;
+            document.getElementById('txt-osh').innerText = l.osh;
+            document.getElementById('txt-tantana').innerText = l.tantana;
+            document.getElementById('txt-loc').innerText = l.loc;
+            document.getElementById('txt-hall').innerText = l.hall;
+            document.getElementById('txt-address').innerText = l.address;
+            document.getElementById('txt-gift').innerText = l.gift;
+            document.getElementById('txt-copy').innerText = l.copy;
+            document.getElementById('txt-confirm').innerText = l.confirm;
+            document.getElementById('txt-send').innerText = l.send;
+            document.getElementById('txt-left').innerText = l.left;
+            document.getElementById('lbl-d').innerText = l.d;
+            document.getElementById('lbl-h').innerText = l.h;
+            document.getElementById('lbl-m').innerText = l.m;
+            document.getElementById('txt-end').innerText = l.end;
+            document.getElementById('langBtn').innerText = l.btn;
+            document.getElementById('ph-name').placeholder = l.ph;
+            document.getElementById('ph-gift').placeholder = l.phGift;
+        }
+
+        function copyCard() { navigator.clipboard.writeText("9860123456789012"); alert("Nusxalandi!"); }
+
+        setInterval(() => {
+            const diff = new Date("Dec 27, 2026 07:00:00") - new Date();
+            if(diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                document.getElementById("minutes").innerText = Math.floor((diff / 1000 / 60) % 60);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
