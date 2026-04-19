@@ -45,12 +45,11 @@
 
         #content { display: none; text-align: center; }
 
-        /* 1. BET: OTLAR YO'NALISHI (Simmetriya va O'rtaga Qarash) FIX */
+        /* 1. BET: OTLAR YO'NALISHI FIX */
         .horse-main { width: 110px; position: absolute; top: 50px; opacity: 0; transition: 1.5s; z-index: 1; }
-        .h-left { left: 10px; transform: scaleX(1); } /* Chapdagi ot o'ngga (ismga) qaragan */
-        .h-right { right: 10px; transform: scaleX(-1); } /* O'ngdagi ot chapga (ismga) qaragan - FIX */
+        .h-left { left: 10px; transform: scaleX(1); } 
+        .h-right { right: 10px; transform: scaleX(-1); } 
 
-        /* YOZUVLAR JOYLASSHUVI */
         .title-group { position: relative; padding-top: 150px; margin-bottom: 25px; z-index: 5; }
         .shohona-title { font-family: 'Great Vibes', cursive; font-size: 5.2rem; color: var(--emerald); margin: 0; line-height: 1; }
         .sunnat-toyi { font-family: 'Cinzel Decorative'; font-size: 2.2rem; color: var(--royal-gold); margin: 0; font-weight: 900; line-height: 1.2; }
@@ -124,8 +123,8 @@
 
     <div id="content">
         <section style="min-height: 100vh; position: relative; padding-bottom: 20px;">
-            <img src="horse_left.png" id="static-l" class="horse-main h-left">
-            <img src="horse_right.png" id="static-r" class="horse-main h-right">
+            <img src="horse.png" id="static-l" class="horse-main h-left">
+            <img src="horse.png" id="static-r" class="horse-main h-right">
             
             <div class="title-group" data-aos="zoom-in">
                 <h1 class="shohona-title">Muhammad</h1>
@@ -241,10 +240,26 @@
             }, 1800);
         }
 
+        // GOOGLE SHEETS TIZIMI
+        document.getElementById('attendance-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const scriptURL = 'Sizning_Script_URL_Manzilingiz'; // SHU YERGA URL QO'YING
+            const form = e.target;
+            document.getElementById('txt-send').innerText = "YUBORILMOQDA...";
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert("Rahmat! Ma'lumotlaringiz qabul qilindi.");
+                    document.getElementById('txt-send').innerText = "YUBORILDI";
+                    form.reset();
+                })
+                .catch(error => alert("Xatolik! Qayta urinib ko'ring."));
+        });
+
         let currentLang = 'latin';
         const langData = {
             latin: { gate: "DO'PPINI BOSING", sunnat: "SUNNAT TO'YI", invite: "Lutfan taklif etamiz! Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli kunini baham ko'rishga taklif qilamiz!", timeTitle: "TADBIR VAQTI", osh: "NAHOR OSHI: 07:00 – 09:00", tantana: "TANTANA: 18:00 DA", loc: "MANZIL", hall: "TANTANALAR SAROYI", address: "Sho'rchi tumani, Surxondaryo", gift: "TO'YONA", copy: "NUSXALASH", confirm: "TASHRIFNI TASDIQLASH", send: "YUBORISH", left: "TO'YGACHA QOLDI:", d: "Kun", h: "Soat", m: "Daq", end: "Sizni kutib qolamiz!", btn: "KRILL", ph: "Ismingiz", phGift: "To'yona miqdori (ixtiyoriy)" },
-            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан таклиф этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "TANTANALAR SAROYI", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Soat", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
+            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан таклиф этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга taklif қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "TANTANALAR SAROYI", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Soat", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
         };
 
         function toggleLang() {
