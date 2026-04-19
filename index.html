@@ -45,10 +45,10 @@
 
         #content { display: none; text-align: center; }
 
-        /* 1. BET: OTLAR VA YOZUVLAR FIX (Simmetriya va Joy) */
+        /* 1. BET: OTLAR YO'NALISHI (Simmetriya va O'rtaga Qarash) FIX */
         .horse-main { width: 110px; position: absolute; top: 50px; opacity: 0; transition: 1.5s; z-index: 1; }
-        .h-left { left: 10px; }
-        .h-right { right: 10px; transform: scaleX(-1); } /* O'ngdagi ot o'ngga qaragan */
+        .h-left { left: 10px; transform: scaleX(1); } /* Chapdagi ot o'ngga (ismga) qaragan */
+        .h-right { right: 10px; transform: scaleX(-1); } /* O'ngdagi ot chapga (ismga) qaragan - FIX */
 
         /* YOZUVLAR JOYLASSHUVI */
         .title-group { position: relative; padding-top: 150px; margin-bottom: 25px; z-index: 5; }
@@ -168,7 +168,7 @@
         <section class="card" data-aos="zoom-in">
             <img src="pattern_fon.png" class="pattern-full pattern-top">
             <h3 id="txt-loc" style="color: var(--emerald); font-family: 'Cinzel Decorative'; margin-bottom: 10px;">MANZIL</h3>
-            <img src="restoran.jpg" class="toyxona-card-img" alt="Ideal SS">
+            <img src="toyxona.jpg" class="toyxona-card-img" alt="Ideal SS">
             <p style="margin-top: 15px; font-size: 1.1rem;"><b>"IDEAL SS"</b> <span id="txt-hall">TANTANALAR SAROYI</span></p>
             <p id="txt-address">Sho'rchi tumani, Surxondaryo</p>
             <a href="https://maps.google.com" target="_blank" class="btn-map g-map">GOOGLE MAPS</a>
@@ -244,7 +244,7 @@
         let currentLang = 'latin';
         const langData = {
             latin: { gate: "DO'PPINI BOSING", sunnat: "SUNNAT TO'YI", invite: "Lutfan taklif etamiz! Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli kunini baham ko'rishga taklif qilamiz!", timeTitle: "TADBIR VAQTI", osh: "NAHOR OSHI: 07:00 – 09:00", tantana: "TANTANA: 18:00 DA", loc: "MANZIL", hall: "TANTANALAR SAROYI", address: "Sho'rchi tumani, Surxondaryo", gift: "TO'YONA", copy: "NUSXALASH", confirm: "TASHRIFNI TASDIQLASH", send: "YUBORISH", left: "TO'YGACHA QOLDI:", d: "Kun", h: "Soat", m: "Daq", end: "Sizni kutib qolamiz!", btn: "KRILL", ph: "Ismingiz", phGift: "To'yona miqdori (ixtiyoriy)" },
-            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан taklif этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "TANTANALAR SAROYI", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Soat", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
+            krill: { gate: "ДЎППИНИ БОСИНГ", sunnat: "СУННАТ ТЎЙИ", invite: "Лутфан таклиф этамиз! Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли кунини баҳам кўришга таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", tantana: "ТАНТАНА: 18:00 ДА", loc: "МАНЗИЛ", hall: "TANTANALAR SAROYI", address: "Шўрчи тумани, Сурхондарё", gift: "ТЎЁНА", copy: "НУСХАЛАШ", confirm: "ТАШРИФНИ ТАСДИҚЛАШ", send: "ЮБОРИШ", left: "ТЎЙГАЧА ҚОЛДИ:", d: "Кун", h: "Soat", m: "Дак", end: "Сизни кутиб қоламиз!", btn: "LOTIN", ph: "Исмингиз", phGift: "Тўёна миқдори (ихтиёрий)" }
         };
 
         function toggleLang() {
